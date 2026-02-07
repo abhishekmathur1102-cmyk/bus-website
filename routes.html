@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+ <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-bus text-2xl text-blue-600 mr-2"></i>
+                    <span class="text-xl font-bold text-gray-800">ShreeBhawaniTravels</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.HTML" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="routes.html" class="text-gray-700 hover:text-blue-600 transition-colors">Routes</a>
+                    <a href="testimonials.html" class="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="#routes" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Routes</a>
+            <a href="#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+     <!-- Featured Routes -->
+    <section id="routes" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Popular Routes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Route Cards -->
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam1.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Barsana</h3>
+                        <p class="text-gray-600 mb-4">The temple, at the birthplace of Shri Radhey ji.</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam2.jpeg" alt="Vaishno Devi" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Vaishno Devi</h3>
+                        <p class="text-gray-600 mb-4">Feeling blessed under the divine guidance of Mata Rani.</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam3.jpeg" alt="Kedarnath" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Kedarnath</h3>
+                        <p class="text-gray-600 mb-4">The Divine Dwelling of Lord Shiva</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam4.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Manali</h3>
+                        <p class="text-gray-600 mb-4">This legendary cradle of all human kind is a prime holiday destination.</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam5.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Ayodhya</h3>
+                        <p class="text-gray-600 mb-4">Revered by millions as the birthplace of Lord Rama</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam6.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jaipur</h3>
+                        <p class="text-gray-600 mb-4">Jaipur, where history meets royalty and creates magic.</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam7.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Agra</h3>
+                        <p class="text-gray-600 mb-4">Agra, a city that whispers stories of love, passion, and glory</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam8.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Varanasi</h3>
+                        <p class="text-gray-600 mb-4">In Varanasi, even love has a divine essence.</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+                                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam9.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jammu and Kashmir</h3>
+                        <p class="text-gray-600 mb-4">Kashmir might be better than heaven</p>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Book Now</button>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </section>
+
+<!-- This is a footer section -->
+
+
+<script src="js/script.js"></script>  
+</body>
+</html>
