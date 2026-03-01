@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-bus text-2xl text-blue-600 mr-2"></i>
+                    <span class="text-xl font-bold text-gray-800">ShreeBhawaniTravels</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.HTML" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="routes.html" class="text-gray-700 hover:text-blue-600 transition-colors">Routes</a>
+                    <a href="testimonials.html"
+                        class="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="#routes" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Routes</a>
+            <a href="#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="#testimonials" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+    <!-- Featured Routes -->
+    <section id="routes" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Popular Routes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Route Cards -->
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam1.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Barsana</h3>
+                        <p class="text-gray-600 mb-4">The temple, at the birthplace of Shri Radhey ji.</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Barsana">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam2.jpeg" alt="Vaishno Devi" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Vaishno Devi</h3>
+                        <p class="text-gray-600 mb-4">Feeling blessed under the divine guidance of Mata Rani.</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Vaishno Devi">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam3.jpeg" alt="Kedarnath" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Kedarnath</h3>
+                        <p class="text-gray-600 mb-4">The Divine Dwelling of Lord Shiva</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Kedarnath">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam4.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Manali</h3>
+                        <p class="text-gray-600 mb-4">This legendary cradle of all human kind is a prime holiday
+                            destination.</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Manali">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam5.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Ayodhya</h3>
+                        <p class="text-gray-600 mb-4">Revered by millions as the birthplace of Lord Rama</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Ayodhya">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam6.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jaipur</h3>
+                        <p class="text-gray-600 mb-4">Jaipur, where history meets royalty and creates magic.</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Jaipur">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam7.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Agra</h3>
+                        <p class="text-gray-600 mb-4">Agra, a city that whispers stories of love, passion, and glory</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Agra">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam8.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Varanasi</h3>
+                        <p class="text-gray-600 mb-4">In Varanasi, even love has a divine essence.</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Varanasi">Book Now</button>
+                    </div>
+                </div>
+                <div class="route-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in">
+                    <img src="image/dam9.jpeg" alt="Barsana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Jammu and Kashmir</h3>
+                        <p class="text-gray-600 mb-4">Kashmir might be better than heaven</p>
+                        <button
+                            class="route-book-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            data-destination="Jammu and Kashmir">Book Now</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Route Departure Modal -->
+    <div id="route-departure-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center animate-fade-in">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <i class="fas fa-map-marker-alt text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Plan Your Trip</h3>
+                <p class="text-gray-600 mt-2">Traveling to <strong id="route-dest-name" class="text-blue-600"></strong>
+                </p>
+            </div>
+            <form id="route-departure-form" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1" for="route-search-from">Departure
+                        City</label>
+                    <select id="route-search-from" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800">
+                        <option value="" disabled selected>Select City</option>
+                        <option value="Agra">Agra</option>
+                        <option value="Ayodhya">Ayodhya</option>
+                        <option value="Barsana">Barsana</option>
+                        <option value="Jaipur">Jaipur</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Kedarnath">Kedarnath</option>
+                        <option value="Manali">Manali</option>
+                        <option value="Vaishno Devi">Vaishno Devi</option>
+                        <option value="Varanasi">Varanasi</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1" for="route-search-date">Travel
+                        Date</label>
+                    <input type="date" id="route-search-date" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800">
+                </div>
+
+                <div class="flex space-x-4 pt-4">
+                    <button type="button" id="cancel-route-booking-btn"
+                        class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="flex-1 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                        Continue
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Travel Mode Selection Modal -->
+    <div id="travel-mode-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden flex items-center justify-center animate-fade-in">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <i class="fas fa-route text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Select Mode of Travel</h3>
+                <p class="text-gray-600 mt-2">Please choose your preferred vehicle for the journey.</p>
+                <p id="modal-trip-details"
+                    class="text-blue-600 font-semibold mt-4 bg-blue-50 py-2 px-4 rounded-lg inline-block border border-blue-100 hidden">
+                </p>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <!-- Car Option -->
+                <button
+                    class="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-xl hover:border-blue-600 hover:bg-blue-50 transition-all mode-btn"
+                    data-mode="Car">
+                    <i class="fas fa-car text-3xl mb-2 text-gray-700"></i>
+                    <span class="font-medium text-gray-800">Car</span>
+                </button>
+                <!-- Van Option -->
+                <button
+                    class="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-xl hover:border-blue-600 hover:bg-blue-50 transition-all mode-btn"
+                    data-mode="Van">
+                    <i class="fas fa-shuttle-van text-3xl mb-2 text-gray-700"></i>
+                    <span class="font-medium text-gray-800">Van</span>
+                </button>
+                <!-- Bus Option -->
+                <button
+                    class="flex flex-col items-center justify-center p-4 border-2 border-gray-200 rounded-xl hover:border-blue-600 hover:bg-blue-50 transition-all mode-btn"
+                    data-mode="Bus">
+                    <i class="fas fa-bus text-3xl mb-2 text-gray-700"></i>
+                    <span class="font-medium text-gray-800">Bus</span>
+                </button>
+            </div>
+
+            <!-- Price Display Area (Hidden by default) -->
+            <div id="price-display" class="hidden mb-6 p-4 rounded-xl shadow-inner text-center animate-fade-in"
+                style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                <h4 class="text-lg font-bold text-gray-800 mb-1">Estimated Travel Cost</h4>
+                <p id="distance-text" class="text-sm text-gray-500 mb-2"></p>
+                <div class="flex justify-center space-x-6">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Total Booking</p>
+                        <p id="total-price-text" class="text-2xl font-extrabold text-blue-600"></p>
+                    </div>
+                    <div class="border-l border-gray-300 pl-6">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Per Seat</p>
+                        <p id="per-seat-price-text" class="text-2xl font-extrabold text-green-600"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex space-x-4">
+                <button id="close-modal-btn"
+                    class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                    Cancel
+                </button>
+                <button id="confirm-mode-btn"
+                    class="flex-1 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled>
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Information Modal -->
+    <div id="personal-info-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-[110] hidden flex items-center justify-center animate-fade-in">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <i class="fas fa-user-circle text-4xl text-blue-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Passenger Details</h3>
+                <p class="text-gray-600 mt-2">Please enter your information to complete the booking.</p>
+            </div>
+
+            <form id="booking-form" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1">Full Name</label>
+                    <input type="text" id="passenger-name" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800"
+                        placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1">Email Address</label>
+                    <input type="email" id="passenger-email" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800"
+                        placeholder="john@example.com">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-medium mb-1">Phone Number</label>
+                    <input type="tel" id="passenger-phone" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800"
+                        placeholder="+91 9876543210">
+                </div>
+
+                <div class="flex space-x-4 pt-4">
+                    <button type="button" id="cancel-booking-btn"
+                        class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit"
+                        class="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors">
+                        Complete Booking
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="booking-notification"
+        class="fixed bottom-4 right-4 z-[120] transform translate-y-32 opacity-0 transition-all duration-500 flex flex-col items-end pointer-events-none">
+        <div class="bg-white border-l-4 border-green-500 shadow-2xl rounded-lg p-4 max-w-sm mb-3 flex items-start">
+            <i class="fas fa-check-circle text-green-500 text-xl mt-0.5 mr-3"></i>
+            <div>
+                <h4 class="text-gray-900 font-bold">Booking Confirmed!</h4>
+                <p class="text-gray-600 text-sm mt-1">Your travel details have been saved securely.</p>
+            </div>
+        </div>
+        <div class="bg-gray-800 text-white shadow-xl rounded-full px-6 py-2 shadow-lg flex items-center animate-bounce">
+            <i class="fas fa-bell text-yellow-400 mr-2 border-r border-gray-600 pr-2"></i>
+            <span class="text-sm font-medium">Check Booking Status sent to email</span>
+        </div>
+    </div>
+
+    <!-- This is a footer section -->
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
