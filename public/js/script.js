@@ -13,10 +13,10 @@ const travelModal = document.getElementById('travel-mode-modal');
 const modeBtns = document.querySelectorAll('.mode-btn');
 const confirmModeBtn = document.getElementById('confirm-mode-btn');
 const closeModalBtn = document.getElementById('close-modal-btn');
+const modalTripDetails = document.getElementById('modal-trip-details');
 let selectedMode = null;
 
 if (homeSearchForm) {
-    const modalTripDetails = document.getElementById('modal-trip-details');
 
     homeSearchForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Stop default form submit
