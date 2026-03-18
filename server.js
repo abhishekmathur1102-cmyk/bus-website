@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     if (filePath === './') filePath = './index.html';
 
     const extname = String(path.extname(filePath)).toLowerCase();
-    
+
     const contentType = {
         '.html': 'text/html',
         '.css': 'text/css',
@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
     fs.readFile(filePath, (err, data) => {
         if (err) {
             // It's good practice to check the error code
-            if(err.code == 'ENOENT') {
+            if (err.code == 'ENOENT') {
                 // File likely doesn't exist
                 res.writeHead(404);
                 res.end('File not found');
@@ -39,6 +39,7 @@ const server = http.createServer((req, res) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log(`Server running on port 3000`);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
