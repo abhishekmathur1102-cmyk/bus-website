@@ -57,6 +57,7 @@ app.post('/api/testimonials', async (req, res) => {
         const savedTestimonial = await newTestimonial.save();
         res.status(201).json(savedTestimonial);
     } catch (error) {
+        console.error('Error saving testimonial:', error);
         res.status(500).json({ error: 'Failed to create testimonial' });
     }
 });
