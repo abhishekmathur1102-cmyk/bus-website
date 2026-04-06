@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Bus Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Complete Your Payment</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Booking Summary -->
+                        <div class="booking-summary mb-4">
+                            <h5>Booking Summary</h5>
+                            <div id="booking-details">
+                                <!-- This will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Customer Details Form -->
+                        <div class="customer-details mb-4">
+                            <h5>Customer Information</h5>
+                            <form id="customer-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="number" class="form-control" id="age" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Payment Status Messages -->
+                        <div id="payment-loading" class="text-center" style="display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Processing payment...</p>
+                        </div>
+
+                        <div id="payment-success" style="display: none;"></div>
+                        <div id="payment-error" style="display: none;"></div>
+                        <div id="payment-cancelled" style="display: none;"></div>
+
+                        <!-- Pay Button -->
+                        <div class="text-center">
+                            <button id="pay-button" class="btn btn-primary btn-lg">
+                                Proceed to Payment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Payment JavaScript -->
+    <script src="js/payment.js"></script>
+    
+    <script>
+        // Get booking data from URL parameters or localStorage
+        function getBookingData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookingData = {
+                amount: parseFloat(urlParams.get('amount')) || 0,
+                busDetails: {
+                    busNumber: urlParams.get('busNumber') || '',
+                    route: urlParams.get('route') || '',
+                    departureTime: urlParams.get('departureTime') || '',
+                    arrivalTime: urlParams.get('arrivalTime') || '',
+                    seats: urlParams.get('seats') ? urlParams.get('seats').split(',') : []
+                }
+            };
+            
+            // Try to get from localStorage if URL params are empty
+            if (!bookingData.amount) {
+                const stored = localStorage.getItem('bookingData');
+                if (stored) {
+                    return JSON.parse(stored);
+                }
+            }
+            
+            return bookingData;
+        }
+
+        // Display booking summary
+        function displayBookingSummary() {
+            const bookingData = getBookingData();
+            const detailsContainer = document.getElementById('booking-details');
+            
+            detailsContainer.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Bus Number:</strong> ${bookingData.busDetails.busNumber}</p>
+                        <p><strong>Route:</strong> ${bookingData.busDetails.route}</p>
+                        <p><strong>Departure:</strong> ${bookingData.busDetails.departureTime}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Arrival:</strong> ${bookingData.busDetails.arrivalTime}</p>
+                        <p><strong>Seats:</strong> ${bookingData.busDetails.seats.join(', ')}</p>
+                        <p><strong>Total Amount:</strong> ₹${bookingData.amount.toFixed(2)}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle payment button click
+        document.getElementById('pay-button').addEventListener('click', async function() {
+            // Validate form
+            const form = document.getElementById('customer-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Get customer details
+            const customerDetails = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                age: document.getElementById('age').value
+            };
+
+            // Get booking data
+            const bookingData = getBookingData();
+            bookingData.customerDetails = customerDetails;
+
+            // Process payment
+            await processBusPayment(bookingData);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayBookingSummary();
+        });
+    </script>
+</body>
+</html>

@@ -194,6 +194,30 @@ if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Get form data
+        const formData = new FormData(bookingForm);
+        const customerDetails = {
+            name: formData.get('passenger-name'),
+            email: formData.get('passenger-email'),
+            phone: formData.get('passenger-phone')
+        };
+
+        // Get booking details from selected mode
+        const bookingData = {
+            amount: selectedMode ? selectedMode.price : 0,
+            customerDetails: customerDetails,
+            busDetails: {
+                busNumber: selectedMode ? selectedMode.name : '',
+                route: `${window.bookingJourney.from} to ${window.bookingJourney.to}`,
+                departureTime: window.bookingJourney.date,
+                arrivalTime: window.bookingJourney.date,
+                seats: selectedMode ? [selectedMode.name] : []
+            }
+        };
+
+        // Store booking data in localStorage for payment page
+        localStorage.setItem('bookingData', JSON.stringify(bookingData));
+
         // Hide modal
         if (personalInfoModal) personalInfoModal.classList.add('hidden');
 
@@ -209,17 +233,8 @@ if (bookingForm) {
             b.classList.add('border-gray-200');
         });
 
-        // Show Notification Toast
-        if (bookingNotification) {
-            bookingNotification.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
-            bookingNotification.classList.add('translate-y-0', 'opacity-100');
-
-            // Hide notification after 5 seconds
-            setTimeout(() => {
-                bookingNotification.classList.remove('translate-y-0', 'opacity-100');
-                bookingNotification.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
-            }, 5000);
-        }
+        // Redirect to payment page
+        window.location.href = 'payment.html';
     });
 }
 

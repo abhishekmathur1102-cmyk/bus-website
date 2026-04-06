@@ -5,7 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json()); // Need this to parse JSON body in POST requests
@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.error('MongoDB connection error:', err));
 
 const Testimonial = require('./models/Testimonial');
+const razorpayController = require('./controllers/razorpayController');
 
 const users = [{
     id: 1,
@@ -28,6 +29,11 @@ const users = [{
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+// Razorpay Payment Routes
+app.post('/api/payment/create-order', razorpayController.createOrder);
+app.post('/api/payment/verify', razorpayController.verifyPayment);
+app.get('/api/payment/order/:orderId', razorpayController.getOrderStatus);
 
 // Testimonials fetch route
 app.get('/api/testimonials', async (req, res) => {
