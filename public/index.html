@@ -7,6 +7,7 @@
     <title>ShreeBhawaniTravels</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -27,7 +28,11 @@
                     <a href="routes.html" class="text-gray-700 hover:text-blue-600 transition-colors">Routes</a>
                     <a href="testimonials.html"
                         class="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                    <a href="my-bookings.html" id="nav-my-bookings" class="hidden text-gray-700 hover:text-blue-600 transition-colors">My Bookings</a>
+                    <button id="nav-login-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Login</button>
+                    <button id="nav-logout-btn" class="hidden text-red-600 hover:text-red-700 transition-colors flex items-center">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
@@ -43,7 +48,9 @@
             <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
             <a href="routes.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Routes</a>
             <a href="testimonials.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonials</a>
-            <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+            <a href="my-bookings.html" id="mobile-nav-my-bookings" class="hidden block px-4 py-2 text-gray-700 hover:bg-gray-100">My Bookings</a>
+            <button id="mobile-nav-login-btn" class="w-full text-left px-4 py-2 text-blue-600 hover:bg-gray-100 font-medium">Login</button>
+            <button id="mobile-nav-logout-btn" class="hidden w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 font-medium">Logout</button>
         </div>
     </header>
 
@@ -139,6 +146,19 @@
                     <i class="fas fa-bus text-3xl mb-2 text-gray-700"></i>
                     <span class="font-medium text-gray-800">Bus</span>
                 </button>
+            </div>
+            
+            <!-- Number of Passengers Input -->
+            <div id="passenger-count-area" class="hidden mb-6 animate-fade-in">
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="passenger-count">Number of Passengers (Excl. Driver)</label>
+                <div class="relative">
+                    <input type="number" id="passenger-count" min="1" value="1"
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800 text-lg font-semibold transition-all">
+                    <span id="capacity-limit-text" class="absolute right-4 top-3.5 text-xs text-gray-400 font-medium"></span>
+                </div>
+                <p id="passenger-warning" class="text-red-500 text-xs mt-2 hidden">
+                    <i class="fas fa-exclamation-circle mr-1"></i> Maximum capacity exceeded for this vehicle!
+                </p>
             </div>
 
             <!-- Price Display Area (Hidden by default) -->
@@ -407,6 +427,83 @@
         </div>
     </footer>
 
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[110] hidden flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Welcome Back</h3>
+                <p class="text-gray-600 mt-2">Login to your account to manage your trips.</p>
+            </div>
+            <form id="login-form">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1" for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1" for="login-password">Password</label>
+                        <input type="password" id="login-password" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                        Login
+                    </button>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Don't have an account? <a href="#" id="switch-to-signup" class="text-blue-600 font-semibold">Sign Up</a>
+                    </p>
+                </div>
+            </form>
+            <button id="close-login-btn" class="mt-4 w-full text-gray-500 hover:text-gray-700 text-sm">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="new-signup-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[110] hidden flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Create Account</h3>
+                <p class="text-gray-600 mt-2">Join us to keep track of all your dream journeys.</p>
+            </div>
+            <form id="new-signup-form" novalidate>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1" for="new-signup-name">Full Name</label>
+                        <input type="text" id="new-signup-name" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1" for="new-signup-email">Email Address</label>
+                        <input type="text" id="new-signup-email" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-1" for="new-signup-password">Password</label>
+                        <input type="password" id="new-signup-password" required minlength="6"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                        Create Account
+                    </button>
+                    <p class="text-center text-sm text-gray-600 mt-4">
+                        Already have an account? <a href="#" id="switch-to-login" class="text-blue-600 font-semibold">Login</a>
+                    </p>
+                </div>
+            </form>
+            <button id="close-signup-btn" class="mt-4 w-full text-gray-500 hover:text-gray-700 text-sm">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Force clear any old auth state once to prevent issues
+        if (!localStorage.getItem('auth_reset_done')) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.setItem('auth_reset_done', 'true');
+        }
+    </script>
     <script src="js/script.js"></script>
 </body>
 

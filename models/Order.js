@@ -43,6 +43,11 @@ const OrderSchema = new mongoose.Schema({
         arrivalTime: Date,
         seats: [String]
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -53,9 +58,8 @@ const OrderSchema = new mongoose.Schema({
     }
 });
 
-OrderSchema.pre('save', function(next) {
-    this.updatedAt = Date.now();
-    next();
-});
+// OrderSchema.pre('save', function() {
+//     this.updatedAt = Date.now();
+// });
 
 module.exports = mongoose.model('Order', OrderSchema);

@@ -10,6 +10,7 @@ const razorpay = new Razorpay({
 module.exports = {
     createOrder: async (req, res) => {
         try {
+            console.log('Creating Razorpay order with body:', req.body);
             const { amount, currency = 'INR', receipt, customerDetails, busDetails } = req.body;
             
             const order = await razorpay.orders.create({
@@ -27,6 +28,7 @@ module.exports = {
                 receipt,
                 customerDetails,
                 busDetails,
+                user: req.body.userId || null,
                 status: 'created'
             });
 
