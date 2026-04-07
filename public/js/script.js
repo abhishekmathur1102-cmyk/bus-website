@@ -44,6 +44,34 @@ let currentBookingAmount = 0;
 let currentUser = JSON.parse(localStorage.getItem('user')) || null;
 let authToken = localStorage.getItem('token') || null;
 
+// Initialize Google Maps Autocomplete
+function initAutocomplete() {
+    const options = {
+        componentRestrictions: { country: 'in' },
+        fields: ['formatted_address', 'name', 'geometry'],
+        types: ['(cities)'] // Focus on cities/towns as requested
+    };
+
+    const fromInput = document.getElementById('search-from');
+    const toInput = document.getElementById('search-to');
+    const routeFromInput = document.getElementById('route-search-from');
+
+    if (fromInput) new google.maps.places.Autocomplete(fromInput, options);
+    if (toInput) new google.maps.places.Autocomplete(toInput, options);
+    if (routeFromInput) new google.maps.places.Autocomplete(routeFromInput, options);
+}
+
+// Call if google is ready, or wait for it
+if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+    initAutocomplete();
+} else {
+    window.addEventListener('load', () => {
+        if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+            initAutocomplete();
+        }
+    });
+}
+
 if (homeSearchForm) {
 
     homeSearchForm.addEventListener('submit', (e) => {

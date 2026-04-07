@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Routes - ShreeBhawaniTravels</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdwk8BU6o6x7XC-wdCWVgqGveHGaes8Jo&libraries=places"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -160,19 +162,9 @@
                 <div>
                     <label class="block text-gray-700 text-sm font-medium mb-1" for="route-search-from">Departure
                         City</label>
-                    <select id="route-search-from" required
-                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800">
-                        <option value="" disabled selected>Select City</option>
-                        <option value="Agra">Agra</option>
-                        <option value="Ayodhya">Ayodhya</option>
-                        <option value="Barsana">Barsana</option>
-                        <option value="Jaipur">Jaipur</option>
-                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                        <option value="Kedarnath">Kedarnath</option>
-                        <option value="Manali">Manali</option>
-                        <option value="Vaishno Devi">Vaishno Devi</option>
-                        <option value="Varanasi">Varanasi</option>
-                    </select>
+                    <input type="text" id="route-search-from" required
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-600 focus:outline-none bg-gray-50 text-gray-800"
+                        placeholder="Select Departure City">
                 </div>
                 <div>
                     <label class="block text-gray-700 text-sm font-medium mb-1" for="route-search-date">Travel
